@@ -1,0 +1,126 @@
+#cadastros tbody tr.shadow {
+   box-shadow: none !important;
+}
+
+.glossary-letter__disabled {
+   cursor: default;
+   user-select: none;
+}
+
+.letters {
+   width: 92%;
+}
+
+.back-top {
+   display: none;
+   position: absolute;
+   top: -100px;
+   left: -100px;
+}
+/* 
+#searchCli {
+   width: 60%;
+} */
+
+@media only screen and (max-width: 767px) {
+
+   .search-mob {
+      width: 100% !important;
+   }
+
+   .glossary {
+      justify-content: flex-start !important;
+   }
+
+   .letters {
+      justify-content: flex-start !important;
+   }
+
+   .glossary *:not(:first-child) {
+      margin-left: 10px;
+   }
+
+   .glossary .letters {
+      overflow-x: scroll;
+   }
+
+   .glossary .letters::-webkit-scrollbar {
+      height: 1px;
+   }
+
+   .glossary .letters::-webkit-scrollbar-track {
+      background: #d4d4d4;
+   }
+
+   .glossary .letters::-webkit-scrollbar-thumb {
+      background: #007bff;
+   }
+
+   .glossary-letter {
+      font-weight: bold;
+   }
+
+   /* .glossary-letter,
+   .glossary-letter__disabled {
+      margin-left: 20px;
+   } */
+
+   #cadastros.shadow {
+      box-shadow: none !important;
+   }
+
+   #cadastros tbody tr.shadow {
+      box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+   }
+
+   #cadastros,
+   #cadastros thead,
+   #cadastros tbody,
+   #cadastros thead tr,
+   #cadastros tbody tr,
+   #cadastros thead th,
+   #cadastros tbody td {
+      display: block;
+   }
+
+   #cadastros thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+   }
+
+   #cadastros {
+      border: none;
+   }
+
+   #cadastros tbody tr {
+      margin-bottom: 60px;
+      background: #f9f9f9;
+      /* border: 3px solid #d4d4d4; */
+      border-radius: 5px;;
+   }
+
+   #cadastros tbody tr td:not(:last-child){
+      position: relative;
+      padding-left: 26%;
+   }
+
+   #cadastros tbody tr td:before {
+      content: attr(data-title);
+      position: absolute;
+      top: 13px;
+      left: 15px;
+      font-weight: bold;
+   }
+
+   .back-top {
+      backface-visibility: hidden;
+      display: none;
+      position: fixed;
+      bottom: 1.7em;
+      right: 1.7em;
+      top: auto;
+      left: auto;
+   }
+   
+}
