@@ -71,14 +71,32 @@
                         </td>
                         <td data-title="Depto.">' . $data['setor'] . '</td>
                         <td>            
-                           <div class="d-flex justify-content-around">
+                           <!-- <div class="d-flex justify-content-around">
                               <a href="#" class="viewButton" data-id="'. $data['id_func'] .'" data-type="func">Visualizar <i class="far fa-eye"></i></a>
-                           </div>
+									</div> -->
+									
+									<div class="d-flex justify-content-around">
+										<a href="#" class="viewButton" data-id="'. $data['id_func'] .'" data-type="func">
+											<i class="far fa-eye d-flex justify-content-center mb-1" data-toggle="tooltip" title="Detalhes"></i>
+											<span class="d-md-none">Detalhes</span>
+										</a>
+
+										<a href="update.php?id='. $data['id_func'] .'&tipo=func" class="ml-md-2">
+											<i class="far fa-edit d-flex justify-content-center mb-1" data-toggle="tooltip" title="Editar"></i>
+											<span class="d-md-none">Editar</span>
+										</a>
+
+										<a href="disable.php?id='. $data['id_func'] .'&tipo=func" class="ml-md-2">
+											<i class="far fa-trash-alt d-flex justify-content-center mb-1" data-toggle="tooltip" title="Excluir"></i>
+											<span class="d-md-none">Excluir</span>
+										</a>
+									</div>
+
                         </td>
                      </tr>
                   ';
                }
-      
+               
                echo $row;
       
             } else {

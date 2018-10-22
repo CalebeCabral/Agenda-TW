@@ -17,51 +17,36 @@ function glossaryFilter() {
 		if (z > 0) {
 			tmp += "<a class='glossary-letter' href='#'>"+ letra +"</a>";
 		}else {
-			tmp += "<span class='glossary-letter__disabled'>"+ letra +"</span>";
+			tmp += "<span class='glossary-letter disabled'>"+ letra +"</span>";
 		}
 	}
 
+	$(".glossary").find(".glossary-letter:not(:first-child)").remove();
 	$(".glossary").find(".letters").append(tmp);
 
 	var $rows = $("#cadastros tbody tr");
 
-	$(".glossary").find("#glossary-all").on("click", function(e) {
+	$(".glossary .glossary-letter:not(.glossary-letter.disabled)").on("click", function(e) {
 		e.preventDefault();
-		$rows.show();
-	});
-
-	$(".glossary .glossary-letter").on("click", function(e) {
-		e.preventDefault();
+		$(this).addClass("active").siblings().removeClass("active");
 		var alpha = $(this).text();
 
-		$rows.hide().filter(function() {
-			var $td = $("td:first-child", $(this));
-			return RegExp("^" + alpha + ".*$", "i").test($td.text().toLowerCase());
-		}).show();
+		if (alpha == "#") {
+			$rows.addClass("hidden");
+			setTimeout(function(){
+				$rows.removeClass("hidden");
+			}, 10);
+		} else {
+			$rows.addClass("hidden");
+			setTimeout(function(){
+				$rows.filter(function() {
+					var $td = $("td:first-child", $(this));
+					return RegExp("^" + alpha + ".*$", "i").test($td.text().toLowerCase());
+				}).removeClass("hidden");
+			}, 10);
+		}
 	});
 }
-
-// function searchBox() {
-
-// 	$("#searchBox").on("keyup", function() {
-// 		var value = $(this).val().toUpperCase();
-// 		var $noResult = $("<tr class='bg-secondary'><td colspan='6'>Nenhum Resultado Encontrado</td></tr>");
-
-// 		$("#cadastros tbody tr").each(function() {
-// 			$row = $(this);
-
-// 			var tdOne = $row.find("td:first-child").text().toUpperCase();
-// 			var tdFive = $row.find("td:nth-child(5)").text().toUpperCase();
-
-// 			if (tdOne.indexOf(value) === -1) {
-// 				$(this).hide();
-// 			} else {
-// 				$(this).show();
-// 			}
-
-// 		});
-// 	});
-// }
 
 function searchBox() {
 
@@ -149,4 +134,16 @@ function tableSorting() {
 		});
 	}
 	sortOrder();
+}
+
+function createAlert(element) {
+	$(element).addClass("show");
+	
+	$("body").on("click", element, function() {
+		$(this).removeClass("show");
+	})
+	
+	setTimeout(function() {
+		$(element).removeClass("show");
+	}, 5000);
 }
